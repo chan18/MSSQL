@@ -1,2 +1,12 @@
+
+
+
+
 # MSSQL
-# MSSQL
+
+
+
+DDL
+
+DML
+
