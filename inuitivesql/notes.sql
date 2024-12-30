@@ -1,4 +1,28 @@
 SELECT 
+TOP 5
+    class, 
+    AVG(level) AS avg_level
+FROM 
+    characters
+GROUP BY
+    class
+HAVING 
+    AVG(level) > 22
+ORDER BY 
+    AVG(level) DESC;
+
+
+/*
+    order of sql clauses
+    lexical order 
+    logical order
+    effective order
+
+*/
+
+
+
+SELECT 
     name,
     level,
 CASE
@@ -123,38 +147,3 @@ GROUP BY
     rarity;
 
 -- numbering functions
-
--- rank is another way of counting
-SELECT
-    item_id,
-    value,
-    ROW_NUMBER() OVER(ORDER BY value) AS row_number, -- ordering in different values.
-    DENSE_RANK() OVER(ORDER BY value) AS dense_rank, --  
-    RANK() OVER(ORDER BY value) AS rank -- 
-FROM 
-    inventory
-ORDER BY value
-
-
--- - 
-
-SELECT
-    RANK() OVER(ORDER BY value DESC) AS rank 
-FROM 
-    inventory
-ORDER BY value
-
--- 
-
-
-SELECT
-    class,
-    level,
-    RANK() OVER(PARTITION BY class ORDER BY level DESC) AS levl_rank 
-FROM 
-    characters;
-
-
-
-
-
